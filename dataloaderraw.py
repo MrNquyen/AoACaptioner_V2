@@ -13,7 +13,7 @@ import skimage.io
 import scipy.misc
 
 import sys
-# root_path = 'F:\\UNIVERSITY\\NCKH\\NCKH_V2\\baseline_final\\AoANet_Official\\AoANet'
+# root_path = 'F:/UNIVERSITY/NCKH/NCKH_V2/baseline_final/AoANet_Official/AoANet'
 root_path = os.getcwd()
 print(f'Current direction is: {root_path}')
 sys.path.append(root_path)

@@ -2,24 +2,24 @@ import argparse
 import os
 root_path = os.getcwd()
 print(f'Current direction is: {root_path}')
-data_root_dir = f'{root_path}\\data'
+data_root_dir = f'{root_path}/data'
 
 def parse_opt():
     parser = argparse.ArgumentParser()
      
     # Data input settings
-    parser.add_argument('--input_json', type=str, default=f'{data_root_dir}\\save_input\\data_raw_bpe.json',
+    parser.add_argument('--input_json', type=str, default=f'{data_root_dir}/save_input/data_raw_bpe.json',
                     help='path to the json file containing additional info and vocab')
-    parser.add_argument('--input_fc_dir', type=str, default=f'{data_root_dir}\\save_input\\resnet101\\resnet101_fc',
+    parser.add_argument('--input_fc_dir', type=str, default=f'{data_root_dir}/save_input/resnet101/resnet101_fc',
                     help='path to the directory containing the preprocessed fc feats')
-    parser.add_argument('--input_att_dir', type=str, default=f'{data_root_dir}\\save_input\\resnet101\\resnet101_att',
+    parser.add_argument('--input_att_dir', type=str, default=f'{data_root_dir}/save_input/resnet101/resnet101_att',
                     help='path to the directory containing the preprocessed att feats')
     parser.add_argument('--input_box_dir', type=str, default=None,
                     help='path to the directory containing the boxes of att feats')
-    parser.add_argument('--input_label_h5', type=str, default=f'{data_root_dir}\\save_input\\data_raw_bpe_label.h5',
+    parser.add_argument('--input_label_h5', type=str, default=f'{data_root_dir}/save_input/data_raw_bpe_label.h5',
                     help='path to the h5file containing the preprocessed dataset')
     
-    parser.add_argument('--start_from', type=str, default=f'{data_root_dir}\\ckpt\\aoa')
+    parser.add_argument('--start_from', type=str, default=f'{data_root_dir}/ckpt/aoa')
     # parser.add_argument('--start_from', type=str, default=None,
     #                 help="""continue training from saved model at this path. Path must contain files saved by previous training process: 
     #                     'infos.pkl'         : configuration;
@@ -27,7 +27,7 @@ def parse_opt():
     #                                           Note: this file contains absolute paths, be careful when moving files around;
     #                     'model.ckpt-*'      : file(s) with model definition (created by tf)
     #                 """)
-    parser.add_argument('--cached_tokens', type=str, default=f'{data_root_dir}\\save_input\\data_raw_ngram_pkl-idxs',
+    parser.add_argument('--cached_tokens', type=str, default=f'{data_root_dir}/save_input/data_raw_ngram_pkl-idxs',
                     help='Cached token file for calculating cider score during self critical training -idxs.')
 
     # Model settings
@@ -169,7 +169,7 @@ def parse_opt():
                     help='how often to save a model checkpoint (in iterations)?')
     parser.add_argument('--save_history_ckpt', type=int, default=0,
                     help='If save checkpoints at every save point')
-    parser.add_argument('--checkpoint_path', type=str, default=f'{data_root_dir}\\ckpt\\aoa', 
+    parser.add_argument('--checkpoint_path', type=str, default=f'{data_root_dir}/ckpt/aoa', 
                     help='directory to store checkpointed models')
     parser.add_argument('--language_eval', type=int, default=0,
                     help='Evaluate language as well (1 = yes, 0 = no)? BLEU/CIDEr/METEOR/ROUGE_L? requires coco-caption code from Github.')
@@ -254,15 +254,15 @@ def add_eval_options(parser):
     
     # For evaluation on MSCOCO images from some split:
         # Data input settings
-    parser.add_argument('--input_json', type=str, default=f'{data_root_dir}\\save_input\\data_raw_bpe.json',
+    parser.add_argument('--input_json', type=str, default=f'{data_root_dir}/save_input/data_raw_bpe.json',
                     help='path to the json file containing additional info and vocab')
-    parser.add_argument('--input_fc_dir', type=str, default=f'{data_root_dir}\\save_input\\resnet101\\resnet101_fc',
+    parser.add_argument('--input_fc_dir', type=str, default=f'{data_root_dir}/save_input/resnet101/resnet101_fc',
                     help='path to the directory containing the preprocessed fc feats')
-    parser.add_argument('--input_att_dir', type=str, default=f'{data_root_dir}\\save_input\\resnet101\\resnet101_att',
+    parser.add_argument('--input_att_dir', type=str, default=f'{data_root_dir}/save_input/resnet101/resnet101_att',
                     help='path to the directory containing the preprocessed att feats')
     parser.add_argument('--input_box_dir', type=str, default=None,
                     help='path to the directory containing the boxes of att feats')
-    parser.add_argument('--input_label_h5', type=str, default=f'{data_root_dir}\\save_input\\data_raw_bpe_label.h5',
+    parser.add_argument('--input_label_h5', type=str, default=f'{data_root_dir}/save_input/data_raw_bpe_label.h5',
                     help='path to the h5file containing the preprocessed dataset')
     parser.add_argument('--split', type=str, default='test', 
                     help='if running on MSCOCO images, which split to use: val|test|train')

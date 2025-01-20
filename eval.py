@@ -17,7 +17,7 @@ import argparse
 import torch
 
 # Set sys path
-# root_path = 'F:\\UNIVERSITY\\NCKH\\NCKH_V2\\baseline_final\\AoANet_Official\\AoANet'
+# root_path = 'F:/UNIVERSITY/NCKH/NCKH_V2/baseline_final/AoANet_Official/AoANet'
 root_path = os.getcwd()
 print(f'Current direction is: {root_path}')
 sys.path.append(root_path)
@@ -32,13 +32,13 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 parser = argparse.ArgumentParser()
 
 # Para
-root_path = 'F:\\UNIVERSITY\\NCKH\\NCKH_V2\\baseline_final\\AoANet_Official\\AoANet'
-save_model_path = f'{root_path}\\data\\ckpt\\aoa'
+root_path = 'F:/UNIVERSITY/NCKH/NCKH_V2/baseline_final/AoANet_Official/AoANet'
+save_model_path = f'{root_path}/data/ckpt/aoa'
 
 para = {
-  'model_path': f'{save_model_path}\\model-best.pth',
+  'model_path': f'{save_model_path}/model-best.pth',
   'cnn_model': 'resnet101',
-  'infos_path': f'{save_model_path}\\infos_raw-best.pkl',
+  'infos_path': f'{save_model_path}/infos_raw-best.pkl',
 }
 
 # Input paths
