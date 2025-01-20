@@ -66,7 +66,7 @@ class DataLoader(data.Dataset):
 
     def reset_iterator(self, split):
         del self._prefetch_process[split]
-        self._prefetch_process[split] = BlobFetcher(split, self, split=='train')
+        self._prefetch_process[split] = BlobFetcher(split, self, split=="train")
         self.iterators[split] = 0
 
     def get_vocab_size(self):
@@ -122,38 +122,38 @@ class DataLoader(data.Dataset):
         print('read %d image features' %(self.num_images))
 
         # separate out indexes for each of the provided splits
-        self.split_ix = {'train': [], 'val': [], 'test': []}
+        self.split_ix = {"train": [], "val": [], "test": []}
         for ix in range(len(self.info['images'])):
             img = self.info['images'][ix]
             if not 'split' in img:
-                self.split_ix['train'].append(ix)
-                self.split_ix['val'].append(ix)
-                self.split_ix['test'].append(ix)
-            elif img['split'] == 'train':
-                self.split_ix['train'].append(ix)
-            elif img['split'] == 'val':
-                self.split_ix['val'].append(ix)
-            elif img['split'] == 'test':
-                self.split_ix['test'].append(ix)
+                self.split_ix["train"].append(ix)
+                self.split_ix["val"].append(ix)
+                self.split_ix["test"].append(ix)
+            elif img['split'] == "train":
+                self.split_ix["train"].append(ix)
+            elif img['split'] == "val":
+                self.split_ix["val"].append(ix)
+            elif img['split'] == "test":
+                self.split_ix["test"].append(ix)
             elif opt.train_only == 0: # restval
-                self.split_ix['train'].append(ix)
+                self.split_ix["train"].append(ix)
 
-        print('assigned %d images to split train' %len(self.split_ix['train']))
-        print('assigned %d images to split val' %len(self.split_ix['val']))
-        print('assigned %d images to split test' %len(self.split_ix['test']))
+        print('assigned %d images to split train' %len(self.split_ix["train"]))
+        print('assigned %d images to split val' %len(self.split_ix["val"]))
+        print('assigned %d images to split test' %len(self.split_ix["test"]))
 
         
         # Limit Training Images
         if self.opt.train_images_use != -1:
             num_train_use = self.opt.train_images_use
-            self.split_ix['train'] = self.split_ix['train'][:num_train_use] 
-        print(f'Number images use to train is: {len(self.split_ix['train'])}')
+            self.split_ix["train"] = self.split_ix["train"][:num_train_use] 
+        print(f'Number images use to train is: {len(self.split_ix["train"])}')
 
         # Fetch Process
-        self.iterators = {'train': 0, 'val': 0, 'test': 0}
+        self.iterators = {"train": 0, "val": 0, "test": 0}
         self._prefetch_process = {} # The three prefetch process
         for split in self.iterators.keys():
-            self._prefetch_process[split] = BlobFetcher(split, self, split=='train')
+            self._prefetch_process[split] = BlobFetcher(split, self, split=="train")
             # Terminate the child process when the parent exists
         def cleanup():
             print('Terminating BlobFetcher')
